@@ -20,3 +20,31 @@ mcporter call --stdio "node /home/baadir/.openclaw/workspace/searxng-mcp/server.
 ```bash
 SEARXNG_BASE=http://localhost:8080 node server.js
 ```
+
+## If you are an OpenClaw assistant
+Add this MCP server to your OpenClaw config (example):
+
+```json
+{
+  "mcpServers": {
+    "searxng": {
+      "command": "node",
+      "args": ["/ABS/PATH/TO/searxng-mcp/server.js"],
+      "env": {
+        "SEARXNG_BASE": "http://localhost:8080"
+      }
+    }
+  }
+}
+```
+
+Then restart OpenClaw:
+```bash
+openclaw gateway restart
+```
+
+Test from OpenClaw:
+```bash
+mcporter call --stdio "node /ABS/PATH/TO/searxng-mcp/server.js" \
+  searxng_search query="ai agents" limit:=5 language="en" time_range="day"
+```
