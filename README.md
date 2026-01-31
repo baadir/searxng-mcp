@@ -22,6 +22,13 @@ SEARXNG_BASE=http://localhost:8080 node server.js
 ```
 
 ## If you are an OpenClaw assistant
+### Quick setup
+```bash
+git clone https://github.com/baadir/searxng-mcp.git
+cd searxng-mcp
+npm install
+```
+
 Add this MCP server to your OpenClaw config (example):
 
 ```json
